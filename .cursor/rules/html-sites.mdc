@@ -1,0 +1,26 @@
+---
+description: UI/UX standards for HTML site projects
+globs: **/*.html
+alwaysApply: false
+---
+
+# HTML Site Standards
+
+## Design
+- Use Inter or Plus Jakarta Sans from Google Fonts
+- Default accent: `#6366f1` — swap to brand color if provided
+- Minimum font size: 16px body, 14px captions
+- Buttons: rounded (`border-radius: 8px`), clear hover states
+
+## Sections (landing pages)
+Always include in this order: nav → hero → features/services → about → CTA → footer
+
+## Performance
+- No jQuery or heavy libraries
+- Lazy-load images with `loading="lazy"`
+- Minify only on final export
+
+## Accessibility
+- All images need `alt` text
+- Use `<button>` for actions, `<a>` for navigation
+- Color contrast ratio minimum 4.5:1
