@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Assistant-H | Command Center</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <span class="logo-icon">H</span>
+      <span class="logo-text">Assistant-H</span>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="#" class="nav-item active" data-section="dashboard">
+        <svg viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+        Dashboard
+      </a>
+      <a href="#" class="nav-item" data-section="build">
+        <svg viewBox="0 0 24 24"><path d="M20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2zm0 5h-2V5h2v3zM4 19h16v2H4z"/></svg>
+        Build
+      </a>
+      <a href="#" class="nav-item" data-section="emails">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        Emails
+      </a>
+      <a href="#" class="nav-item" data-section="documents">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+        Documents
+      </a>
+      <a href="#" class="nav-item" data-section="learn">
+        <svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg>
+        Learn
+      </a>
+      <a href="#" class="nav-item" data-section="projects">
+        <svg viewBox="0 0 24 24"><path d="M20 6h-2.18c.07-.44.18-.88.18-1.34C18 2.99 16.21 1 14 1c-1.36 0-2.5.74-3.19 1.84L12 4.69l1.19-1.85C13.71 2.28 14.31 2 15 2c1.1 0 2 .9 2 2 0 .46-.1.9-.27 1.3L15 7h5v13H4V7h5L7.27 5.3C7.1 4.9 7 4.46 7 4c0-1.1.9-2 2-2 .69 0 1.29.28 1.81.84L12 4.69l1.19-1.85C13.5 1.74 12.36 1 11 1 8.79 1 7 2.99 7 4.66c0 .46.11.9.18 1.34H4c-1.1 0-2 .9-2 2v13c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2z"/></svg>
+        Projects
+      </a>
+      <a href="#" class="nav-item" data-section="workflow">
+        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg>
+        Workflow
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="user-badge">
+        <span class="user-avatar">H</span>
+        <div>
+          <div class="user-name">Henri</div>
+          <div class="user-role">iinfoman</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main">
+
+    <!-- Header -->
+    <header class="topbar">
+      <button class="menu-toggle" id="menuToggle">
+        <svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+      </button>
+      <div class="topbar-title" id="pageTitle">Dashboard</div>
+      <div class="topbar-time" id="clock"></div>
+    </header>
+
+    <!-- DASHBOARD SECTION -->
+    <section class="section active" id="section-dashboard">
+      <div class="welcome-banner">
+        <div>
+          <h1 class="welcome-title">Welcome back, Henri 👋</h1>
+          <p class="welcome-sub">What are we building today?</p>
+        </div>
+      </div>
+
+      <div class="quick-actions">
+        <button class="qa-btn" onclick="goTo('build')">
+          <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14l4-4h12c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg>
+          New Project
+        </button>
+        <button class="qa-btn" onclick="goTo('emails')">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          Write Email
+        </button>
+        <button class="qa-btn" onclick="goTo('documents')">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6z"/></svg>
+          New Document
+        </button>
+        <button class="qa-btn" onclick="goTo('workflow')">
+          <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6z"/></svg>
+          My Tasks
+        </button>
+      </div>
+
+      <h2 class="section-heading">Your Tools</h2>
+      <div class="cards-grid">
+        <div class="card" onclick="goTo('build')">
+          <div class="card-icon" style="background:#6366f120">
+            <svg viewBox="0 0 24 24" fill="#6366f1"><path d="M20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2zm0 5h-2V5h2v3z"/></svg>
+          </div>
+          <div class="card-body">
+            <h3>Build</h3>
+            <p>Start a new website, app, SaaS, or dashboard project</p>
+          </div>
+          <span class="card-arrow">→</span>
+        </div>
+        <div class="card" onclick="goTo('emails')">
+          <div class="card-icon" style="background:#10b98120">
+            <svg viewBox="0 0 24 24" fill="#10b981"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          </div>
+          <div class="card-body">
+            <h3>Email Writer</h3>
+            <p>Draft professional emails for clients, leads, and follow-ups</p>
+          </div>
+          <span class="card-arrow">→</span>
+        </div>
+        <div class="card" onclick="goTo('documents')">
+          <div class="card-icon" style="background:#f59e0b20">
+            <svg viewBox="0 0 24 24" fill="#f59e0b"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+          </div>
+          <div class="card-body">
+            <h3>Documents</h3>
+            <p>Contracts, proposals, briefs — print-ready templates</p>
+          </div>
+          <span class="card-arrow">→</span>
+        </div>
+        <div class="card" onclick="goTo('learn')">
+          <div class="card-icon" style="background:#3b82f620">
+            <svg viewBox="0 0 24 24" fill="#3b82f6"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg>
+          </div>
+          <div class="card-body">
+            <h3>Learn</h3>
+            <p>Guides for Cursor, GitHub, HTML, CSS, and your tools</p>
+          </div>
+          <span class="card-arrow">→</span>
+        </div>
+        <div class="card" onclick="goTo('projects')">
+          <div class="card-icon" style="background:#ec489920">
+            <svg viewBox="0 0 24 24" fill="#ec4899"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+          </div>
+          <div class="card-body">
+            <h3>Projects</h3>
+            <p>Track all your active builds and client projects</p>
+          </div>
+          <span class="card-arrow">→</span>
+        </div>
+        <div class="card" onclick="goTo('workflow')">
+          <div class="card-icon" style="background:#8b5cf620">
+            <svg viewBox="0 0 24 24" fill="#8b5cf6"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+          </div>
+          <div class="card-body">
+            <h3>Workflow</h3>
+            <p>Daily tasks, to-dos, and your personal work board</p>
+          </div>
+          <span class="card-arrow">→</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- BUILD SECTION -->
+    <section class="section" id="section-build">
+      <h2 class="section-heading">Build a New Project</h2>
+      <div class="cards-grid">
+        <div class="card build-card">
+          <div class="card-icon" style="background:#6366f120">
+            <svg viewBox="0 0 24 24" fill="#6366f1"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
+          </div>
+          <div class="card-body"><h3>Landing Page</h3><p>Single page for a business or product</p></div>
+        </div>
+        <div class="card build-card">
+          <div class="card-icon" style="background:#10b98120">
+            <svg viewBox="0 0 24 24" fill="#10b981"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2z"/></svg>
+          </div>
+          <div class="card-body"><h3>Full Website</h3><p>Multi-page website with nav and footer</p></div>
+        </div>
+        <div class="card build-card">
+          <div class="card-icon" style="background:#f59e0b20">
+            <svg viewBox="0 0 24 24" fill="#f59e0b"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+          </div>
+          <div class="card-body"><h3>Dashboard</h3><p>Admin panel or data dashboard</p></div>
+        </div>
+        <div class="card build-card">
+          <div class="card-icon" style="background:#3b82f620">
+            <svg viewBox="0 0 24 24" fill="#3b82f6"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+          </div>
+          <div class="card-body"><h3>SaaS Tool</h3><p>Software as a service product</p></div>
+        </div>
+        <div class="card build-card">
+          <div class="card-icon" style="background:#ec489920">
+            <svg viewBox="0 0 24 24" fill="#ec4899"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"/></svg>
+          </div>
+          <div class="card-body"><h3>Automation Tool</h3><p>Workflow automation or AI agent</p></div>
+        </div>
+        <div class="card build-card">
+          <div class="card-icon" style="background:#8b5cf620">
+            <svg viewBox="0 0 24 24" fill="#8b5cf6"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99z"/></svg>
+          </div>
+          <div class="card-body"><h3>Android App</h3><p>Mobile app (React Native)</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EMAIL SECTION -->
+    <section class="section" id="section-emails">
+      <h2 class="section-heading">Email Writer</h2>
+      <div class="tool-panel">
+        <div class="form-group">
+          <label>Email Type</label>
+          <select id="emailType">
+            <option>Client Introduction</option>
+            <option>Project Proposal</option>
+            <option>Follow-up</option>
+            <option>Invoice / Payment</option>
+            <option>Project Update</option>
+            <option>Cold Outreach</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Client / Recipient Name</label>
+          <input type="text" id="emailRecipient" placeholder="e.g. John Smith" />
+        </div>
+        <div class="form-group">
+          <label>Key Details</label>
+          <textarea id="emailDetails" placeholder="e.g. website project, budget R5000, deadline 2 weeks..."></textarea>
+        </div>
+        <button class="btn-primary" onclick="generateEmail()">Generate Email Draft</button>
+        <div class="output-box" id="emailOutput"></div>
+      </div>
+    </section>
+
+    <!-- DOCUMENTS SECTION -->
+    <section class="section" id="section-documents">
+      <h2 class="section-heading">Documents & Templates</h2>
+      <div class="cards-grid">
+        <div class="card" onclick="loadTemplate('contract')">
+          <div class="card-icon" style="background:#f59e0b20">
+            <svg viewBox="0 0 24 24" fill="#f59e0b"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+          </div>
+          <div class="card-body"><h3>Client Contract</h3><p>Simple freelance service agreement</p></div>
+          <span class="card-arrow">→</span>
+        </div>
+        <div class="card" onclick="loadTemplate('proposal')">
+          <div class="card-icon" style="background:#6366f120">
+            <svg viewBox="0 0 24 24" fill="#6366f1"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg>
+          </div>
+          <div class="card-body"><h3>Project Proposal</h3><p>Scope, timeline, and pricing</p></div>
+          <span class="card-arrow">→</span>
+        </div>
+        <div class="card" onclick="loadTemplate('invoice')">
+          <div class="card-icon" style="background:#10b98120">
+            <svg viewBox="0 0 24 24" fill="#10b981"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+          </div>
+          <div class="card-body"><h3>Invoice</h3><p>Professional invoice template</p></div>
+          <span class="card-arrow">→</span>
+        </div>
+        <div class="card" onclick="loadTemplate('brief')">
+          <div class="card-icon" style="background:#3b82f620">
+            <svg viewBox="0 0 24 24" fill="#3b82f6"><path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2z"/></svg>
+          </div>
+          <div class="card-body"><h3>Project Brief</h3><p>Capture client requirements</p></div>
+          <span class="card-arrow">→</span>
+        </div>
+      </div>
+      <div class="output-box" id="docOutput" style="margin-top:2rem;white-space:pre-wrap;"></div>
+      <button class="btn-primary" id="printBtn" style="display:none;margin-top:1rem" onclick="window.print()">Print / Save as PDF</button>
+    </section>
+
+    <!-- LEARN SECTION -->
+    <section class="section" id="section-learn">
+      <h2 class="section-heading">Learning Hub</h2>
+      <div class="cards-grid">
+        <a href="https://docs.cursor.com" target="_blank" class="card">
+          <div class="card-icon" style="background:#6366f120">
+            <svg viewBox="0 0 24 24" fill="#6366f1"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2z"/></svg>
+          </div>
+          <div class="card-body"><h3>Cursor Docs</h3><p>Official Cursor IDE documentation</p></div>
+          <span class="card-arrow">↗</span>
+        </a>
+        <a href="https://docs.github.com" target="_blank" class="card">
+          <div class="card-icon" style="background:#10b98120">
+            <svg viewBox="0 0 24 24" fill="#10b981"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+          </div>
+          <div class="card-body"><h3>GitHub Docs</h3><p>Git, repos, commits, and more</p></div>
+          <span class="card-arrow">↗</span>
+        </a>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" class="card">
+          <div class="card-icon" style="background:#f59e0b20">
+            <svg viewBox="0 0 24 24" fill="#f59e0b"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <div class="card-body"><h3>HTML & CSS</h3><p>MDN Web Docs — the best reference</p></div>
+          <span class="card-arrow">↗</span>
+        </a>
+        <a href="https://www.netlify.com/docs/" target="_blank" class="card">
+          <div class="card-icon" style="background:#3b82f620">
+            <svg viewBox="0 0 24 24" fill="#3b82f6"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+          </div>
+          <div class="card-body"><h3>Netlify Docs</h3><p>Deploy and host your sites</p></div>
+          <span class="card-arrow">↗</span>
+        </a>
+        <a href="https://claude.ai" target="_blank" class="card">
+          <div class="card-icon" style="background:#ec489920">
+            <svg viewBox="0 0 24 24" fill="#ec4899"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"/></svg>
+          </div>
+          <div class="card-body"><h3>Claude AI</h3><p>Claude Design, chat, and tools</p></div>
+          <span class="card-arrow">↗</span>
+        </a>
+        <a href="https://figma.com" target="_blank" class="card">
+          <div class="card-icon" style="background:#8b5cf620">
+            <svg viewBox="0 0 24 24" fill="#8b5cf6"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
+          </div>
+          <div class="card-body"><h3>Figma</h3><p>UI/UX design tool</p></div>
+          <span class="card-arrow">↗</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section class="section" id="section-projects">
+      <h2 class="section-heading">My Projects</h2>
+      <div class="tool-panel">
+        <div class="form-row">
+          <input type="text" id="projectName" placeholder="Project name" />
+          <select id="projectStatus">
+            <option>In Progress</option>
+            <option>Planning</option>
+            <option>Done</option>
+            <option>On Hold</option>
+          </select>
+          <button class="btn-primary" onclick="addProject()">Add Project</button>
+        </div>
+        <div id="projectList" class="project-list"></div>
+      </div>
+    </section>
+
+    <!-- WORKFLOW SECTION -->
+    <section class="section" id="section-workflow">
+      <h2 class="section-heading">My Workflow</h2>
+      <div class="tool-panel">
+        <div class="form-row">
+          <input type="text" id="taskInput" placeholder="Add a task..." />
+          <select id="taskPriority">
+            <option>Normal</option>
+            <option>High</option>
+            <option>Low</option>
+          </select>
+          <button class="btn-primary" onclick="addTask()">Add Task</button>
+        </div>
+        <div id="taskList" class="task-list"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
