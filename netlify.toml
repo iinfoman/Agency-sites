@@ -2,9 +2,9 @@
   publish = "."
 
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+  from = "/"
+  to = "/Assistant-H/"
+  status = 302
 
 [[headers]]
   for = "/*"
