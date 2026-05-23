@@ -1,0 +1,41 @@
+---
+description: Quality checklist to run after every build or edit. Catches common bugs, missing files, and waste before pushing.
+alwaysApply: true
+---
+
+# Quality Checklist — Run After Every Build
+
+## Code quality
+- [ ] All CSS classes used in HTML are defined in the stylesheet
+- [ ] All JS functions called in HTML exist in script.js
+- [ ] No broken links or missing file references
+- [ ] No hardcoded secrets, tokens, or passwords in any file
+
+## Project files
+- [ ] `.gitignore` exists at root
+- [ ] `README.md` exists at root
+- [ ] `netlify.toml` exists if project is deployed to Netlify
+- [ ] `package.json` exists if Node.js tooling is used or planned
+
+## Git hygiene
+- [ ] `.cursor/mcp.json` is in `.gitignore` (contains tokens)
+- [ ] No `node_modules/`, `.env`, or `.netlify/` tracked by git
+- [ ] Commit message is clear and present-tense
+
+## Performance
+- [ ] No unused CSS blocks
+- [ ] No unnecessary external libraries loaded
+- [ ] Images use `loading="lazy"` where applicable
+
+## Mobile & accessibility
+- [ ] Viewport meta tag present
+- [ ] All images have `alt` text
+- [ ] Buttons use `<button>`, links use `<a>`
+- [ ] Site is usable on mobile (check at 375px width)
+
+## Token-saving rules
+- Read only the files needed — not the whole project
+- Make targeted edits (StrReplace) instead of rewriting whole files
+- Batch independent shell commands with `;` in one call
+- Commit multiple fixes in one commit instead of one per fix
+- Never restate what was just done — just confirm and move on
