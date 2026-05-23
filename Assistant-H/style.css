@@ -415,6 +415,23 @@ textarea { min-height: 100px; resize: vertical; }
 
 .remove-btn:hover { color: #ef4444; }
 
+/* BUILD CARDS */
+.build-card {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  cursor: pointer;
+  transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s;
+}
+
+.build-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(99, 102, 241, 0.12);
+}
+
+.build-card .card-arrow { display: none; }
+
 /* MOBILE */
 @media (max-width: 768px) {
   .sidebar {

@@ -1,0 +1,11 @@
+{
+  "name": "agency-sites",
+  "version": "1.0.0",
+  "description": "Henri's agency workspace — websites, apps, dashboards, and tools",
+  "author": "Henri (iinfoman)",
+  "license": "MIT",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx serve . --listen 3000"
+  }
+}
