@@ -1,0 +1,16 @@
+node_modules/
+.expo/
+dist/
+.env
+*.local
+.DS_Store
+.netlify/
+android/
+ios/
+.cursor/mcp.json
+google-services.json
+google-play-key.json
+*.keystore
+*.p8
+*.p12
+*.mobileprovision

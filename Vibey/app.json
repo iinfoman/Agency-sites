@@ -1,0 +1,84 @@
+{
+  "expo": {
+    "name": "Vibey",
+    "slug": "vibey",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0A0A0F"
+    },
+
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.vibey.app",
+      "buildNumber": "1",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "Vibey needs your location for navigation and to find places near you.",
+        "NSLocationAlwaysUsageDescription": "Vibey uses your location in the background to keep navigation running.",
+        "NSMotionUsageDescription": "Vibey reads your accelerometer to detect bumps and potholes on the road.",
+        "NSMicrophoneUsageDescription": "Vibey listens for your voice commands like 'Call Mum' or 'Navigate to work'.",
+        "NSCameraUsageDescription": "Vibey can use the front camera to monitor for driver fatigue.",
+        "NSContactsUsageDescription": "Vibey needs contacts access to dial people by name with your voice.",
+        "NSSMSCompositionUsageDescription": "Vibey sends your live location to emergency contacts in a panic situation."
+      }
+    },
+
+    "android": {
+      "package": "com.vibey.app",
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0A0A0F"
+      },
+      "permissions": [
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_BACKGROUND_LOCATION",
+        "RECORD_AUDIO",
+        "CAMERA",
+        "READ_CONTACTS",
+        "SEND_SMS",
+        "CALL_PHONE",
+        "VIBRATE",
+        "SYSTEM_ALERT_WINDOW"
+      ],
+      "googleServicesFile": "./google-services.json"
+    },
+
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+
+    "plugins": [
+      "expo-web-browser",
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Vibey needs your location for navigation.",
+          "isAndroidBackgroundLocationEnabled": true
+        }
+      ],
+      [
+        "expo-contacts",
+        {
+          "contactsPermission": "Vibey uses contacts to dial people by voice command."
+        }
+      ],
+      "expo-sensors",
+      "expo-av"
+    ],
+
+    "extra": {
+      "mapboxToken": "REPLACE_WITH_YOUR_MAPBOX_TOKEN",
+      "eas": {
+        "projectId": "REPLACE_WITH_YOUR_EAS_PROJECT_ID"
+      }
+    },
+
+    "owner": "iinfoman"
+  }
+}

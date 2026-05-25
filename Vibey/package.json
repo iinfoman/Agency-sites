@@ -1,0 +1,37 @@
+{
+  "name": "vibey",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "@react-navigation/native": "^7.2.4",
+    "@react-navigation/stack": "^7.9.2",
+    "expo": "~56.0.4",
+    "expo-av": "^16.0.8",
+    "expo-blur": "~56.0.3",
+    "expo-contacts": "~56.0.7",
+    "expo-gl": "~56.0.5",
+    "expo-haptics": "~56.0.3",
+    "expo-linear-gradient": "~56.0.4",
+    "expo-location": "~56.0.13",
+    "expo-sensors": "~56.0.5",
+    "expo-sms": "~56.0.3",
+    "expo-speech": "~56.0.3",
+    "expo-status-bar": "~56.0.4",
+    "expo-web-browser": "~56.0.5",
+    "react": "19.2.3",
+    "react-native": "0.85.3",
+    "react-native-gesture-handler": "~2.31.1",
+    "react-native-maps": "1.27.2",
+    "react-native-safe-area-context": "~5.7.0",
+    "react-native-screens": "4.25.2",
+    "three": "^0.166.1",
+    "zustand": "^5.0.13"
+  },
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web"
+  },
+  "private": true
+}

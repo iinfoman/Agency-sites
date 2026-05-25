@@ -1,0 +1,8 @@
+feat: scaffold full Vibey AI Travel Companion app (Phases 1-5)
+
+Phase 1: Expo scaffold, dark neon theme, 3D Vibey emoji (Three.js/expo-gl), Zustand store, custom dark neon map
+Phase 2: Accelerometer pothole detection, GPS speed monitor, fatigue detector with amber screen alert
+Phase 3: Turn-by-turn navigation (OSRM), destination search (Nominatim), POI discovery (Overpass), budget carousel with affiliate links
+Phase 4: Voice commands with contact dialing, emergency SOS + live GPS SMS, safety color overlay
+Phase 5: Vibey Plus paywall with ZAR pricing, accessory marketplace, voice packs, contextual partner ad engine
+Config: app.json with all iOS/Android permissions, eas.json with dev/preview/production build profiles
