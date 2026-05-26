@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import useVibeyStore from '../store/useVibeyStore';
+import useOvibeStore from '../store/useOvibeStore';
 
 // ─── POI Discovery Hook ───────────────────────────────────────────────────────
 // Fetches Points of Interest along the active route using Overpass API (free, OSM).
@@ -18,7 +18,7 @@ const CATEGORY_TAGS = {
 };
 
 export function usePOI() {
-  const { routeCoords, routeActive, destination, setPOIs } = useVibeyStore();
+  const { routeCoords, routeActive, destination, setPOIs } = useOvibeStore();
 
   useEffect(() => {
     if (!routeActive || routeCoords.length < 2) return;

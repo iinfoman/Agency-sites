@@ -4,11 +4,11 @@ import {
   StyleSheet, SafeAreaView, StatusBar, Alert,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import useVibeyStore from '../store/useVibeyStore';
+import useOvibeStore from '../store/useOvibeStore';
 import { colors, gradients } from '../theme/colors';
 import { spacing, radius, typography } from '../theme/typography';
 
-// ─── PremiumScreen — Vibey Plus Paywall ───────────────────────────────────────
+// ─── PremiumScreen — Ovibe Plus Paywall ───────────────────────────────────────
 // Showcases premium features with a sleek upsell UI.
 // Pricing converts to local currency via a static map (Phase 6: use a live FX API).
 // Payment processing: wire RevenueCat SDK here for production IAP.
@@ -26,23 +26,23 @@ const PRICE_MAP = {
 const USER_REGION = 'ZA';
 
 const FEATURES = [
-  { icon: '😂', title: 'Funny Mode', desc: 'Vibey becomes your hilarious co-pilot with jokes and dramatic reactions.' },
+  { icon: '😂', title: 'Funny Mode', desc: 'Ovibe becomes your hilarious co-pilot with jokes and dramatic reactions.' },
   { icon: '😎', title: 'Serious Mode', desc: 'Laser-focused, professional navigation assistant. Zero distractions.' },
-  { icon: '📡', title: 'Offline Engine', desc: 'Full navigation, route recalculation and Vibey reactions — zero signal needed.' },
+  { icon: '📡', title: 'Offline Engine', desc: 'Full navigation, route recalculation and Ovibe reactions — zero signal needed.' },
   { icon: '📳', title: 'Advanced Telematics', desc: 'Pothole detection, fatigue alerts, and speed sensing with haptic feedback.' },
   { icon: '🎨', title: 'Accessory Unlocks', desc: 'Exclusive monthly skins and accessories dropped just for Plus members.' },
   { icon: '🚫', title: 'Ad-Free', desc: 'No partner location ads. Clean, distraction-free driving.' },
 ];
 
 export default function PremiumScreen({ navigation }) {
-  const { setIsPremium, isPremium } = useVibeyStore();
+  const { setIsPremium, isPremium } = useOvibeStore();
   const [selected, setSelected] = useState('yearly');
   const pricing = PRICE_MAP[USER_REGION] ?? PRICE_MAP.DEFAULT;
 
   const handleSubscribe = () => {
     // Production: replace with RevenueCat purchasePackage() call
     Alert.alert(
-      '🎉 Vibey Plus',
+      '🎉 Ovibe Plus',
       `Subscribe for ${pricing.currency}${selected === 'yearly' ? pricing.yearly + '/yr' : pricing.monthly + '/mo'}?\n\n(RevenueCat payment flow goes here in production)`,
       [
         { text: 'Cancel', style: 'cancel' },
@@ -63,7 +63,7 @@ export default function PremiumScreen({ navigation }) {
         <LinearGradient colors={gradients.bgMain} style={StyleSheet.absoluteFill} />
         <View style={styles.alreadyPremium}>
           <Text style={styles.premiumIcon}>💎</Text>
-          <Text style={styles.premiumTitle}>You're on Vibey Plus!</Text>
+          <Text style={styles.premiumTitle}>You're on Ovibe Plus!</Text>
           <Text style={styles.premiumSub}>All features are unlocked. Enjoy the ride.</Text>
           <TouchableOpacity style={styles.backBtn} onPress={() => navigation.goBack()}>
             <Text style={styles.backBtnText}>← Back</Text>
@@ -90,7 +90,7 @@ export default function PremiumScreen({ navigation }) {
         {/* Hero */}
         <LinearGradient colors={gradients.premium} style={styles.hero}>
           <Text style={styles.heroEmoji}>💎</Text>
-          <Text style={styles.heroTitle}>Vibey Plus</Text>
+          <Text style={styles.heroTitle}>Ovibe Plus</Text>
           <Text style={styles.heroSub}>Unlock the full experience. Drive smarter, safer, and with more personality.</Text>
         </LinearGradient>
 
@@ -174,7 +174,7 @@ export default function PremiumScreen({ navigation }) {
         <TouchableOpacity style={styles.ctaBtn} onPress={handleSubscribe} activeOpacity={0.9}>
           <LinearGradient colors={gradients.cyanPurple} style={styles.ctaGradient}>
             <Text style={styles.ctaText}>
-              Start Vibey Plus — {pricing.currency}{selected === 'yearly' ? pricing.yearly + '/yr' : pricing.monthly + '/mo'}
+              Start Ovibe Plus — {pricing.currency}{selected === 'yearly' ? pricing.yearly + '/yr' : pricing.monthly + '/mo'}
             </Text>
           </LinearGradient>
         </TouchableOpacity>

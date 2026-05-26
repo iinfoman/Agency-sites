@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import * as Speech from 'expo-speech';
-import useVibeyStore from '../store/useVibeyStore';
+import useOvibeStore from '../store/useOvibeStore';
 
 // ─── Navigation Hook ──────────────────────────────────────────────────────────
 // Uses the free OSRM routing engine (no API key needed) to calculate routes.
@@ -17,7 +17,7 @@ export default function useNavigation() {
     setRouteCoords, setRouteActive,
     setCurrentInstruction, setDistanceToNext,
     routeCoords, routeActive,
-  } = useVibeyStore();
+  } = useOvibeStore();
 
   const stepsRef = useRef([]);
   const currentStepRef = useRef(0);

@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
-import useVibeyStore from '../../store/useVibeyStore';
+import useOvibeStore from '../../store/useOvibeStore';
 import { colors } from '../../theme/colors';
 import { radius, spacing, typography } from '../../theme/typography';
 
@@ -10,10 +10,10 @@ const MODES = [
   { key: 'serious', label: '😎', title: 'Serious', color: colors.purple },
 ];
 
-// Allows switching Vibey's personality mode.
+// Allows switching Ovibe's personality mode.
 // Funny & Serious are premium-gated.
 export default function PersonalitySelector() {
-  const { personalityMode, setPersonalityMode, isPremium } = useVibeyStore();
+  const { personalityMode, setPersonalityMode, isPremium } = useOvibeStore();
 
   return (
     <View style={styles.row}>

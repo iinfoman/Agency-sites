@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import * as Haptics from 'expo-haptics';
 import { Audio } from 'expo-av';
-import useVibeyStore from '../store/useVibeyStore';
+import useOvibeStore from '../store/useOvibeStore';
 
 // ─── Fatigue Detector (Telemetry-Based) ──────────────────────────────────────
 // Phase 2 uses GPS telemetry as the fatigue proxy (no camera needed yet).
@@ -23,9 +23,9 @@ export default function useFatigueDetector() {
     location,
     routeActive,
     setFatigueDetected,
-    setVibeyReaction,
+    setOvibeReaction,
     fatigueDetected,
-  } = useVibeyStore();
+  } = useOvibeStore();
 
   const lastMovementRef = useRef(Date.now());
   const soundRef = useRef(null);
@@ -61,7 +61,7 @@ export default function useFatigueDetector() {
   const triggerFatigueAlert = async () => {
     alertActiveRef.current = true;
     setFatigueDetected(true);
-    setVibeyReaction('scared');
+    setOvibeReaction('scared');
 
     // Repeating haptic pattern — buzz buzz buzz
     const buzz = async () => {
@@ -86,7 +86,7 @@ export default function useFatigueDetector() {
   const clearFatigueAlert = async () => {
     alertActiveRef.current = false;
     setFatigueDetected(false);
-    setVibeyReaction('idle');
+    setOvibeReaction('idle');
     if (soundRef.current) {
       await soundRef.current.stopAsync();
       soundRef.current = null;

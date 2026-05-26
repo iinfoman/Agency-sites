@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 import * as SMS from 'expo-sms';
 import { LinearGradient } from 'expo-linear-gradient';
-import useVibeyStore from '../store/useVibeyStore';
+import useOvibeStore from '../store/useOvibeStore';
 import { colors, gradients } from '../theme/colors';
 import { spacing, radius, typography } from '../theme/typography';
 
@@ -29,7 +29,7 @@ function getEmergencyNumber() {
 }
 
 export default function EmergencyScreen({ navigation }) {
-  const { emergencyContacts, setEmergencyContacts, location } = useVibeyStore();
+  const { emergencyContacts, setEmergencyContacts, location } = useOvibeStore();
   const [newName, setNewName] = useState('');
   const [newPhone, setNewPhone] = useState('');
   const [panicActive, setPanicActive] = useState(false);
@@ -53,7 +53,7 @@ export default function EmergencyScreen({ navigation }) {
     const lat = location?.latitude ?? 0;
     const lon = location?.longitude ?? 0;
     const mapsLink = `https://maps.google.com/?q=${lat},${lon}`;
-    const message = `🆘 EMERGENCY ALERT from Vibey App\nI need help. My live location: ${mapsLink}\nCoordinates: ${lat.toFixed(5)}, ${lon.toFixed(5)}`;
+    const message = `🆘 EMERGENCY ALERT from Ovibe App\nI need help. My live location: ${mapsLink}\nCoordinates: ${lat.toFixed(5)}, ${lon.toFixed(5)}`;
 
     // 1. Silently dial emergency services
     Linking.openURL(`tel:${emergencyNum}`);

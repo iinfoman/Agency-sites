@@ -1,16 +1,16 @@
 import { useEffect, useRef } from 'react';
 import * as Speech from 'expo-speech';
 import * as Haptics from 'expo-haptics';
-import useVibeyStore from '../store/useVibeyStore';
+import useOvibeStore from '../store/useOvibeStore';
 
 // ─── Contextual Ad Engine ─────────────────────────────────────────────────────
 // Monitors the user's GPS position against a list of verified partner locations.
-// When within TRIGGER_RADIUS metres, Vibey delivers a non-intrusive audio ad.
+// When within TRIGGER_RADIUS metres, Ovibe delivers a non-intrusive audio ad.
 // Each partner fires once per session (no repeated nagging).
 //
 // Production setup:
 //   - Fetch partner list from your backend API on app start
-//   - Partners register via a brand dashboard with coordinates + custom Vibey line
+//   - Partners register via a brand dashboard with coordinates + custom Ovibe line
 //   - Monetise via CPM (cost per thousand triggers) or CPA (cost per action)
 
 const TRIGGER_RADIUS_M = 1000; // 1 km trigger zone
@@ -22,7 +22,7 @@ const PARTNER_BRANDS = [
     name: 'Starbucks',
     latitude: -26.1077,
     longitude: 28.0567,
-    line: "Hey, I'm thirsty! Verified Vibey Partner 1 km ahead — use code VIBEY15 for 15% off your coffee!",
+    line: "Hey, I'm thirsty! Verified Ovibe Partner 1 km ahead — use code OVIBE15 for 15% off your coffee!",
     emoji: '☕',
   },
   {
@@ -30,7 +30,7 @@ const PARTNER_BRANDS = [
     name: 'Steers',
     latitude: -26.2041,
     longitude: 28.0473,
-    line: "My oh my, something smells amazing! Steers is just up ahead — Vibey members get a free upgrade today!",
+    line: "My oh my, something smells amazing! Steers is just up ahead — Ovibe members get a free upgrade today!",
     emoji: '🍔',
   },
   {
@@ -38,13 +38,13 @@ const PARTNER_BRANDS = [
     name: 'Engen',
     latitude: -26.1500,
     longitude: 28.0200,
-    line: "Heads up! Verified Vibey fuel stop nearby. Engen ahead — lock in today's best fuel price!",
+    line: "Heads up! Verified Ovibe fuel stop nearby. Engen ahead — lock in today's best fuel price!",
     emoji: '⛽',
   },
 ];
 
 export default function useContextualAds() {
-  const { location, isPremium, personalityMode } = useVibeyStore();
+  const { location, isPremium, personalityMode } = useOvibeStore();
   const triggeredRef = useRef(new Set()); // fired IDs this session
 
   useEffect(() => {
@@ -72,10 +72,10 @@ function triggerAdLine(partner, mode) {
   // Gentle single haptic to draw attention
   Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
 
-  // Vibey speaks the partner line
+  // Ovibe speaks the partner line
   const line = mode === 'funny'
     ? partner.line
-    : `${partner.emoji} Vibey Partner nearby — ${partner.name}`;
+    : `${partner.emoji} Ovibe Partner nearby — ${partner.name}`;
 
   Speech.speak(line, {
     language: 'en-US',

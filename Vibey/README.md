@@ -1,10 +1,10 @@
-# Vibey — AI Travel Companion App
+# Ovibe — AI Travel Companion App
 
 A next-generation AI Travel Companion for iOS and Android built with React Native + Expo.
 
 ## Features
 - 🌙 Dark neon UI — cyan, purple, electric green
-- 🤖 3D animated Vibey emoji (Three.js + expo-gl, no API needed)
+- 🤖 3D animated Ovibe emoji (Three.js + expo-gl, no API needed)
 - 🗺️ Custom dark-neon styled map view
 - 🎭 Personality modes: Normal, Funny, Serious
 - 📡 Accelerometer pothole detection + haptic reactions
@@ -16,7 +16,7 @@ A next-generation AI Travel Companion for iOS and Android built with React Nativ
 - 🎙️ Voice commands — "Call Mum", "Navigate to work", "SOS"
 - 🆘 Emergency panic trigger — dials 10111 + live GPS SMS
 - 🛡️ Safety color overlay on route (green/amber/red)
-- 💎 Vibey Plus paywall (R89/mo or R699/yr)
+- 💎 Ovibe Plus paywall (R89/mo or R699/yr)
 - 🛍️ Accessory store + voice pack marketplace
 - 📢 Contextual partner ads via GPS proximity
 
@@ -80,7 +80,7 @@ eas submit --platform ios
 | TomTom (speed limits) | developer.tomtom.com | `useSpeedMonitor.js` |
 
 ## Build phases completed
-- **Phase 1** ✅ Scaffold, theme, map, 3D Vibey
+- **Phase 1** ✅ Scaffold, theme, map, 3D Ovibe
 - **Phase 2** ✅ Sensors (accelerometer, speed, fatigue)
 - **Phase 3** ✅ Navigation, voice guidance, POI carousel
 - **Phase 4** ✅ Voice commands, emergency SOS, safety overlay

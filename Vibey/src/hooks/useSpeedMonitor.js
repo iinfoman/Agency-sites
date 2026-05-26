@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import * as Haptics from 'expo-haptics';
-import useVibeyStore from '../store/useVibeyStore';
+import useOvibeStore from '../store/useOvibeStore';
 
 // ─── Speed Monitor ────────────────────────────────────────────────────────────
 // Reads GPS speed from the location state (already tracked in MapScreen).
 // Compares against the known speed limit and flags isSpeeding.
-// Also triggers Vibey's goggles reaction and a gentle haptic nudge.
+// Also triggers Ovibe's goggles reaction and a gentle haptic nudge.
 //
 // Speed limit data: in Phase 3 this will be fetched from TomTom/HERE API.
 // For now it defaults to 60 km/h in built-up areas as a safe fallback.
@@ -19,9 +19,9 @@ export default function useSpeedMonitor() {
     speedLimit,
     setCurrentSpeed,
     setIsSpeeding,
-    setVibeyReaction,
+    setOvibeReaction,
     isSpeeding,
-  } = useVibeyStore();
+  } = useOvibeStore();
 
   useEffect(() => {
     if (!location) return;
@@ -36,14 +36,14 @@ export default function useSpeedMonitor() {
     if (overLimit && !isSpeeding) {
       // Just started speeding
       setIsSpeeding(true);
-      setVibeyReaction('scared');
+      setOvibeReaction('scared');
       Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning);
-      setTimeout(() => setVibeyReaction('idle'), 3000);
+      setTimeout(() => setOvibeReaction('idle'), 3000);
     } else if (!overLimit && isSpeeding) {
       // Back under limit
       setIsSpeeding(false);
-      setVibeyReaction('excited');
-      setTimeout(() => setVibeyReaction('idle'), 1500);
+      setOvibeReaction('excited');
+      setTimeout(() => setOvibeReaction('idle'), 1500);
     }
   }, [location?.speed]);
 }

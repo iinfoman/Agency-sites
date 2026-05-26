@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Animated } from 'react-native';
-import useVibeyStore from '../store/useVibeyStore';
+import useOvibeStore from '../store/useOvibeStore';
 import { colors } from '../theme/colors';
 import { spacing, radius, typography } from '../theme/typography';
 
@@ -9,7 +9,7 @@ import { spacing, radius, typography } from '../theme/typography';
 // Prompts the driver to take a break and find a rest stop.
 
 export default function FatigueAlert() {
-  const { fatigueDetected, setFatigueDetected, setVibeyReaction, personalityMode } = useVibeyStore();
+  const { fatigueDetected, setFatigueDetected, setOvibeReaction, personalityMode } = useOvibeStore();
   const flashAnim = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
@@ -37,7 +37,7 @@ export default function FatigueAlert() {
 
   const dismiss = () => {
     setFatigueDetected(false);
-    setVibeyReaction('idle');
+    setOvibeReaction('idle');
   };
 
   return (
@@ -49,7 +49,7 @@ export default function FatigueAlert() {
 
 // Separate dismissible card — sits above the flash overlay
 export function FatigueCard() {
-  const { fatigueDetected, setFatigueDetected, setVibeyReaction, personalityMode } = useVibeyStore();
+  const { fatigueDetected, setFatigueDetected, setOvibeReaction, personalityMode } = useOvibeStore();
 
   if (!fatigueDetected) return null;
 
@@ -61,7 +61,7 @@ export function FatigueCard() {
 
   const dismiss = () => {
     setFatigueDetected(false);
-    setVibeyReaction('idle');
+    setOvibeReaction('idle');
   };
 
   return (

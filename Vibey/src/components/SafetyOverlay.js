@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Polyline } from 'react-native-maps';
-import useVibeyStore from '../store/useVibeyStore';
+import useOvibeStore from '../store/useOvibeStore';
 
 // ─── Safety Overlay ────────────────────────────────────────────────────────────
 // Color-codes route segments based on simulated safety data.
@@ -18,7 +18,7 @@ import useVibeyStore from '../store/useVibeyStore';
 const SEGMENT_SIZE = 8; // Number of coords per segment
 
 export default function SafetyOverlay() {
-  const { routeCoords, routeActive } = useVibeyStore();
+  const { routeCoords, routeActive } = useOvibeStore();
   const [segments, setSegments] = useState([]);
 
   useEffect(() => {

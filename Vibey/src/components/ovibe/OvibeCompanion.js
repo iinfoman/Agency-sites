@@ -2,15 +2,15 @@ import React, { useRef, useEffect } from 'react';
 import { View, StyleSheet, Animated, Text } from 'react-native';
 import { GLView } from 'expo-gl';
 import * as THREE from 'three';
-import useVibeyStore from '../../store/useVibeyStore';
+import useOvibeStore from '../../store/useOvibeStore';
 import { colors } from '../../theme/colors';
 
-// ─── VibeyCompanion ──────────────────────────────────────────────────────────
+// ─── OvibeCompanion ──────────────────────────────────────────────────────────
 // The 3D animated emoji face rendered via Three.js + expo-gl.
 // All geometry is built in code — no external model files needed.
 
-export default function VibeyCompanion() {
-  const { vibeyColor, vibeyGlow, accessories, vibeyReaction } = useVibeyStore();
+export default function OvibeCompanion() {
+  const { ovibeColor, ovibeGlow, accessories, ovibeReaction } = useOvibeStore();
 
   // Animated values for bounce and shake reactions
   const bounceAnim = useRef(new Animated.Value(0)).current;
@@ -29,7 +29,7 @@ export default function VibeyCompanion() {
 
   // ── Reaction animations ──────────────────────────────────────────────────
   useEffect(() => {
-    if (vibeyReaction === 'bounce') {
+    if (ovibeReaction === 'bounce') {
       Animated.sequence([
         Animated.timing(bounceAnim, { toValue: -30, duration: 100, useNativeDriver: true }),
         Animated.spring(bounceAnim, { toValue: 0, friction: 3, useNativeDriver: true }),
@@ -38,7 +38,7 @@ export default function VibeyCompanion() {
         Animated.timing(scaleAnim, { toValue: 1.2, duration: 80, useNativeDriver: true }),
         Animated.spring(scaleAnim, { toValue: 1, friction: 4, useNativeDriver: true }),
       ]).start();
-    } else if (vibeyReaction === 'excited') {
+    } else if (ovibeReaction === 'excited') {
       Animated.loop(
         Animated.sequence([
           Animated.timing(bounceAnim, { toValue: -10, duration: 150, useNativeDriver: true }),
@@ -46,7 +46,7 @@ export default function VibeyCompanion() {
         ]),
         { iterations: 3 }
       ).start();
-    } else if (vibeyReaction === 'scared') {
+    } else if (ovibeReaction === 'scared') {
       // Speed warning — rapid shake side to side
       Animated.sequence([
         Animated.timing(bounceAnim, { toValue: 8, duration: 80, useNativeDriver: true }),
@@ -55,14 +55,14 @@ export default function VibeyCompanion() {
         Animated.timing(bounceAnim, { toValue: -6, duration: 80, useNativeDriver: true }),
         Animated.spring(bounceAnim, { toValue: 0, friction: 5, useNativeDriver: true }),
       ]).start();
-    } else if (vibeyReaction === 'sleepy') {
+    } else if (ovibeReaction === 'sleepy') {
       // Slow drooping down
       Animated.timing(bounceAnim, { toValue: 12, duration: 1200, useNativeDriver: true }).start();
-    } else if (vibeyReaction === 'idle') {
+    } else if (ovibeReaction === 'idle') {
       Animated.spring(bounceAnim, { toValue: 0, friction: 5, useNativeDriver: true }).start();
       Animated.spring(scaleAnim, { toValue: 1, friction: 5, useNativeDriver: true }).start();
     }
-  }, [vibeyReaction]);
+  }, [ovibeReaction]);
 
   // ── Three.js scene setup ────────────────────────────────────────────────
   const onContextCreate = async (gl) => {
@@ -112,7 +112,7 @@ export default function VibeyCompanion() {
     // ── Head ─────────────────────────────────────────────────────────────
     const headGeo = new THREE.SphereGeometry(1, 32, 32);
     const headMat = new THREE.MeshStandardMaterial({
-      color: new THREE.Color(vibeyColor),
+      color: new THREE.Color(ovibeColor),
       roughness: 0.15,
       metalness: 0.3,
     });
@@ -153,8 +153,8 @@ export default function VibeyCompanion() {
     // ── Neon Halo ─────────────────────────────────────────────────────────
     const haloGeo = new THREE.TorusGeometry(1.2, 0.04, 8, 64);
     const haloMat = new THREE.MeshStandardMaterial({
-      color: new THREE.Color(vibeyGlow),
-      emissive: new THREE.Color(vibeyGlow),
+      color: new THREE.Color(ovibeGlow),
+      emissive: new THREE.Color(ovibeGlow),
       emissiveIntensity: 2,
     });
     const halo = new THREE.Mesh(haloGeo, haloMat);
@@ -244,7 +244,7 @@ export default function VibeyCompanion() {
 
 // ── Reaction Speech Bubble ────────────────────────────────────────────────────
 function ReactionBubble() {
-  const { vibeyReaction, personalityMode } = useVibeyStore();
+  const { ovibeReaction, personalityMode } = useOvibeStore();
 
   const messages = {
     bounce: {
@@ -270,7 +270,7 @@ function ReactionBubble() {
     idle: null,
   };
 
-  const msg = messages[vibeyReaction]?.[personalityMode];
+  const msg = messages[ovibeReaction]?.[personalityMode];
   if (!msg) return null;
 
   return (

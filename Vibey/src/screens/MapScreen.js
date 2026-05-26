@@ -11,11 +11,11 @@ import {
 import MapView, { PROVIDER_DEFAULT, Polyline, Marker } from 'react-native-maps';
 import { LinearGradient } from 'expo-linear-gradient';
 import * as Location from 'expo-location';
-import useVibeyStore from '../store/useVibeyStore';
+import useOvibeStore from '../store/useOvibeStore';
 import { colors, gradients } from '../theme/colors';
 import { spacing, radius, typography } from '../theme/typography';
-import VibeyCompanion from '../components/vibey/VibeyCompanion';
-import PersonalitySelector from '../components/vibey/PersonalitySelector';
+import OvibeCompanion from '../components/ovibe/OvibeCompanion';
+import PersonalitySelector from '../components/ovibe/PersonalitySelector';
 import FatigueAlert, { FatigueCard } from '../components/FatigueAlert';
 import POICarousel from '../components/POICarousel';
 import VoiceButton from '../components/VoiceButton';
@@ -34,9 +34,9 @@ export default function MapScreen({ navigation }) {
   const {
     location, setLocation,
     routeActive, currentInstruction, routeCoords, destination,
-    personalityMode, vibeyReaction,
+    personalityMode, ovibeReaction,
     isSpeeding, isFloatingMode, setFloatingMode,
-  } = useVibeyStore();
+  } = useOvibeStore();
 
   // Activate all sensor + navigation hooks
   useAccelerometer();
@@ -133,9 +133,9 @@ export default function MapScreen({ navigation }) {
         ) : null}
       </SafeAreaView>
 
-      {/* ── Vibey Companion (floating 3D emoji panel) ────────────── */}
-      <View style={styles.vibeyPanel} pointerEvents="box-none">
-        <VibeyCompanion />
+      {/* ── Ovibe Companion (floating 3D emoji panel) ────────────── */}
+      <View style={styles.ovibePanel} pointerEvents="box-none">
+        <OvibeCompanion />
         <PersonalitySelector />
       </View>
 
@@ -169,7 +169,7 @@ export default function MapScreen({ navigation }) {
 
 // ── Speed Badge ──────────────────────────────────────────────────────────────
 function SpeedBadge() {
-  const { currentSpeed, speedLimit, isSpeeding } = useVibeyStore();
+  const { currentSpeed, speedLimit, isSpeeding } = useOvibeStore();
   const displaySpeed = Math.round((currentSpeed ?? 0) * 3.6); // m/s → km/h
 
   return (
@@ -281,7 +281,7 @@ const styles = StyleSheet.create({
   },
   instructionText: { ...typography.body, color: colors.textPrimary },
 
-  vibeyPanel: {
+  ovibePanel: {
     position: 'absolute',
     bottom: 120,
     right: spacing.md,

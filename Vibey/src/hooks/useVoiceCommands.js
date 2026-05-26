@@ -2,12 +2,12 @@ import { useState, useRef, useEffect } from 'react';
 import { Linking, Alert } from 'react-native';
 import * as Contacts from 'expo-contacts';
 import * as Speech from 'expo-speech';
-import useVibeyStore from '../store/useVibeyStore';
+import useOvibeStore from '../store/useOvibeStore';
 
 // ─── Voice Commands Hook ──────────────────────────────────────────────────────
 // Button-triggered voice listener (compliant with App Store guidelines).
 // Recognised commands:
-//   "Call [Name]"     → dials the contact immediately, Vibey drops out of call
+//   "Call [Name]"     → dials the contact immediately, Ovibe drops out of call
 //   "Navigate to [X]" → sets destination (triggers navigation hook)
 //   "Stop navigation" → clears active route
 //   "Help" / "SOS"    → triggers emergency routine
@@ -20,7 +20,7 @@ import useVibeyStore from '../store/useVibeyStore';
 export default function useVoiceCommands() {
   const [listening, setListening] = useState(false);
   const [transcript, setTranscript] = useState('');
-  const { setDestination, setRouteActive, setRouteCoords, emergencyContacts } = useVibeyStore();
+  const { setDestination, setRouteActive, setRouteCoords, emergencyContacts } = useOvibeStore();
 
   const startListening = async () => {
     setListening(true);
@@ -113,9 +113,9 @@ export default function useVoiceCommands() {
     const phone = match.phoneNumbers[0].number.replace(/\s+/g, '');
     speak(`Calling ${match.name}.`);
 
-    // Small delay so Vibey finishes speaking before the call opens
+    // Small delay so Ovibe finishes speaking before the call opens
     setTimeout(() => {
-      // Vibey drops out immediately — driver takes full private control
+      // Ovibe drops out immediately — driver takes full private control
       Linking.openURL(`tel:${phone}`);
     }, 1200);
   };

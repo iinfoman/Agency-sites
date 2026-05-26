@@ -4,7 +4,7 @@ import {
   FlatList, StyleSheet, SafeAreaView, StatusBar, ActivityIndicator,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import useVibeyStore from '../store/useVibeyStore';
+import useOvibeStore from '../store/useOvibeStore';
 import { colors, gradients } from '../theme/colors';
 import { spacing, radius, typography } from '../theme/typography';
 
@@ -21,7 +21,7 @@ export default function SearchScreen({ navigation }) {
   const [loading, setLoading] = useState(false);
   const debounceRef = useRef(null);
 
-  const { setDestination, location } = useVibeyStore();
+  const { setDestination, location } = useOvibeStore();
 
   const search = (text) => {
     setQuery(text);
@@ -43,7 +43,7 @@ export default function SearchScreen({ navigation }) {
           }),
         });
         const res = await fetch(`${NOMINATIM_URL}?${params}`, {
-          headers: { 'Accept-Language': 'en', 'User-Agent': 'VibeyApp/1.0' },
+          headers: { 'Accept-Language': 'en', 'User-Agent': 'OvibeApp/1.0' },
         });
         const data = await res.json();
         setResults(data);

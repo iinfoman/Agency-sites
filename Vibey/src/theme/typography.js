@@ -1,4 +1,4 @@
-// Vibey — Typography Scale
+// Ovibe — Typography Scale
 export const typography = {
   heading1: { fontSize: 32, fontWeight: '800', letterSpacing: -0.5 },
   heading2: { fontSize: 24, fontWeight: '700', letterSpacing: -0.3 },

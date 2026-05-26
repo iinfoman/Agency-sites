@@ -4,11 +4,11 @@ import {
   StyleSheet, SafeAreaView, StatusBar, Alert,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import useVibeyStore from '../store/useVibeyStore';
+import useOvibeStore from '../store/useOvibeStore';
 import { colors, gradients } from '../theme/colors';
 import { spacing, radius, typography } from '../theme/typography';
 
-// ─── CustomiseScreen — Vibey Appearance + Accessory Marketplace ───────────────
+// ─── CustomiseScreen — Ovibe Appearance + Accessory Marketplace ───────────────
 // Free: change skin colour and glow colour.
 // Premium: purchase accessories via microtransaction (RevenueCat IAP in production).
 
@@ -41,19 +41,19 @@ const ACCESSORIES = [
 ];
 
 const VOICE_PACKS = [
-  { id: 'default', label: 'Default Vibey', desc: 'The classic voice', price: 'Free', free: true },
+  { id: 'default', label: 'Default Ovibe', desc: 'The classic voice', price: 'Free', free: true },
   { id: 'deep', label: 'Deep Navigator', desc: 'Low, smooth, confident', price: 'R29', free: false },
-  { id: 'chipper', label: 'Chipper Vibey', desc: 'High energy, fun', price: 'R29', free: false },
+  { id: 'chipper', label: 'Chipper Ovibe', desc: 'High energy, fun', price: 'R29', free: false },
   { id: 'zen', label: 'Zen Mode', desc: 'Calm, meditative', price: 'R29', free: false },
 ];
 
 export default function CustomiseScreen({ navigation }) {
   const {
-    vibeyColor, setVibeyColor,
-    vibeyGlow, setVibeyGlow,
+    ovibeColor, setOvibeColor,
+    ovibeGlow, setOvibeGlow,
     accessories, toggleAccessory,
     isPremium,
-  } = useVibeyStore();
+  } = useOvibeStore();
 
   const [activeTab, setActiveTab] = useState('appearance');
 
@@ -90,7 +90,7 @@ export default function CustomiseScreen({ navigation }) {
           <Text style={styles.backArrow}>←</Text>
         </TouchableOpacity>
         <View>
-          <Text style={styles.title}>Customise Vibey</Text>
+          <Text style={styles.title}>Customise Ovibe</Text>
           <Text style={styles.subtitle}>Make it yours</Text>
         </View>
         {!isPremium && (
@@ -126,10 +126,10 @@ export default function CustomiseScreen({ navigation }) {
                 <TouchableOpacity
                   key={c.id}
                   style={[styles.colourSwatch, { backgroundColor: c.hex },
-                    vibeyColor === c.hex && styles.swatchSelected]}
-                  onPress={() => setVibeyColor(c.hex)}
+                    ovibeColor === c.hex && styles.swatchSelected]}
+                  onPress={() => setOvibeColor(c.hex)}
                 >
-                  {vibeyColor === c.hex && <Text style={styles.swatchCheck}>✓</Text>}
+                  {ovibeColor === c.hex && <Text style={styles.swatchCheck}>✓</Text>}
                 </TouchableOpacity>
               ))}
             </View>
@@ -140,10 +140,10 @@ export default function CustomiseScreen({ navigation }) {
                 <TouchableOpacity
                   key={c.id}
                   style={[styles.colourSwatch, { backgroundColor: c.hex },
-                    vibeyGlow === c.hex && styles.swatchSelected]}
-                  onPress={() => setVibeyGlow(c.hex)}
+                    ovibeGlow === c.hex && styles.swatchSelected]}
+                  onPress={() => setOvibeGlow(c.hex)}
                 >
-                  {vibeyGlow === c.hex && <Text style={styles.swatchCheck}>✓</Text>}
+                  {ovibeGlow === c.hex && <Text style={styles.swatchCheck}>✓</Text>}
                 </TouchableOpacity>
               ))}
             </View>
@@ -151,9 +151,9 @@ export default function CustomiseScreen({ navigation }) {
             <View style={styles.previewCard}>
               <Text style={styles.previewLabel}>Current Look</Text>
               <View style={styles.previewRow}>
-                <View style={[styles.previewDot, { backgroundColor: vibeyColor }]} />
+                <View style={[styles.previewDot, { backgroundColor: ovibeColor }]} />
                 <Text style={styles.previewText}>Skin</Text>
-                <View style={[styles.previewDot, { backgroundColor: vibeyGlow, marginLeft: spacing.md }]} />
+                <View style={[styles.previewDot, { backgroundColor: ovibeGlow, marginLeft: spacing.md }]} />
                 <Text style={styles.previewText}>Glow</Text>
               </View>
             </View>
@@ -166,7 +166,7 @@ export default function CustomiseScreen({ navigation }) {
             {!isPremium && (
               <TouchableOpacity style={styles.premiumBanner} onPress={() => navigation.navigate('Premium')}>
                 <LinearGradient colors={gradients.premium} style={styles.premiumBannerGradient}>
-                  <Text style={styles.premiumBannerText}>💎 Vibey Plus members get all accessories free</Text>
+                  <Text style={styles.premiumBannerText}>💎 Ovibe Plus members get all accessories free</Text>
                   <Text style={styles.premiumBannerCta}>Upgrade →</Text>
                 </LinearGradient>
               </TouchableOpacity>

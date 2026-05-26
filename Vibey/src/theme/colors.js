@@ -1,4 +1,4 @@
-// Vibey — Global Neon Color Palette
+// Ovibe — Global Neon Color Palette
 export const colors = {
   // Backgrounds
   bg: '#0A0A0F',
@@ -26,9 +26,9 @@ export const colors = {
   success: '#39FF14',
   warning: '#FFB800',
 
-  // Vibey skin defaults
-  vibeyDefault: '#FFD700',
-  vibeyGlow: '#00F5FF',
+  // Ovibe skin defaults
+  ovibeDefault: '#FFD700',
+  ovibeGlow: '#00F5FF',
 };
 
 export const gradients = {

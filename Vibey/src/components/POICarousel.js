@@ -5,12 +5,12 @@ import {
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import * as WebBrowser from 'expo-web-browser';
-import useVibeyStore from '../store/useVibeyStore';
+import useOvibeStore from '../store/useOvibeStore';
 import { colors, gradients } from '../theme/colors';
 import { spacing, radius, typography } from '../theme/typography';
 
 // Affiliate tracking tag — swap with your real partner IDs in Phase 5
-const AFFILIATE_TAG = 'vibeyapp-20';
+const AFFILIATE_TAG = 'ovibeapp-20';
 
 const BUDGET_TIERS = [
   { key: 'all', label: 'All' },
@@ -29,7 +29,7 @@ const BOOKING_LINKS = {
 };
 
 export default function POICarousel() {
-  const { pois, routeActive, budgetTier, setBudgetTier } = useVibeyStore();
+  const { pois, routeActive, budgetTier, setBudgetTier } = useOvibeStore();
   const [activeCategory, setActiveCategory] = useState('all');
 
   if (!routeActive || pois.length === 0) return null;
